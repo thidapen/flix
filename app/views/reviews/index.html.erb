@@ -1,0 +1,19 @@
+<header id="content-header">
+  <h1>Reviews for <%= link_to(@movie.title, @movie) %></h1>
+</header>
+<h3>Average Review</h3>
+<p>
+  <%= format_average_stars(@movie) %>
+</p>
+<ol id="reviews">
+  <% @reviews.each do |review| %>
+    <li>
+      <span class="review"><%= pluralize(review.stars, 'star') %></span>
+      <span class="user">by <%= review.name %></span>
+      <span class="date"><%= time_ago_in_words(review.created_at) %> ago</span>
+      <p>
+        &quot;<%= review.comment %>&quot;
+      </p>
+    </li>
+  <% end %>
+</ol>
